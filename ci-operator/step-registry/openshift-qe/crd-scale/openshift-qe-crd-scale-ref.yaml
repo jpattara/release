@@ -11,7 +11,7 @@ ref:
     documentation: |-
       Add args for e2e-benchmarking kube-burner-ocp cmd.
   - name: E2E_VERSION
-    default: "v2.5.1"
+    default: "default"
     documentation: |-
       Override the e2e version
   - name: KUBE_BURNER_VERSION
@@ -22,10 +22,6 @@ ref:
     default: "false"
     documentation: |-
       Disable pprof by default
-  - name: FLAGS
-    default: ""
-    documentation: |-
-      Default empty FLAGS
   - name: PROFILE_TYPE
     default: "both"
     documentation: |-
