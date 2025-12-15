@@ -84,7 +84,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws-2
+      ci-operator.openshift.io/cloud-cluster-profile: aws
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-csi-operator-main-aws-efs-operator-e2e
@@ -776,7 +776,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws-3
+      ci-operator.openshift.io/cloud-cluster-profile: aws
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-csi-operator-main-e2e-aws-ovn-upgrade
@@ -920,7 +920,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: azure4
-      ci-operator.openshift.io/cloud-cluster-profile: azure4
+      ci-operator.openshift.io/cloud-cluster-profile: azure-2
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-csi-operator-main-e2e-azure-csi
@@ -1212,7 +1212,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: azure4
-      ci-operator.openshift.io/cloud-cluster-profile: azure4
+      ci-operator.openshift.io/cloud-cluster-profile: azure-2
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-csi-operator-main-e2e-azure-file-nfs-csi
@@ -1355,11 +1355,9 @@ presubmits:
     cluster: build07
     context: ci/prow/e2e-azure-ovn-upgrade
     decorate: true
-    decoration_config:
-      timeout: 5h30m0s
     labels:
       ci-operator.openshift.io/cloud: azure4
-      ci-operator.openshift.io/cloud-cluster-profile: azure4
+      ci-operator.openshift.io/cloud-cluster-profile: azure-2
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-csi-operator-main-e2e-azure-ovn-upgrade
@@ -2072,14 +2070,13 @@ presubmits:
       skip_cloning: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws
+      ci-operator.openshift.io/cloud-cluster-profile: aws-3
       ci-operator.openshift.io/variant: okd-scos
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-csi-operator-main-okd-scos-e2e-aws-ovn
     optional: true
     rerun_command: /test okd-scos-e2e-aws-ovn
-    skip_if_only_changed: ^docs/|\.md$|^(?:.*/)?(?:\.gitignore|OWNERS|PROJECT|LICENSE)$
     spec:
       containers:
       - args:
@@ -2258,7 +2255,7 @@ presubmits:
           secretName: result-aggregator
     trigger: (?m)^/test( | .* )security,?($|\s.*)
   - agent: kubernetes
-    always_run: true
+    always_run: false
     branches:
     - ^main$
     - ^main-

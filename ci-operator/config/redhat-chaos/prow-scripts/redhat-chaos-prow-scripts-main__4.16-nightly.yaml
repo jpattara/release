@@ -66,11 +66,9 @@ tests:
     observers:
       enable:
       - redhat-chaos-cerberus
-      - openshift-qe-cluster-density-v2-observer
     test:
     - chain: redhat-chaos-krkn-hub-tests
     workflow: redhat-chaos-installer-aws
-  timeout: 6h0m0s
 - always_run: false
   as: krkn-hub-node-tests
   steps:
@@ -88,11 +86,9 @@ tests:
     observers:
       enable:
       - redhat-chaos-cerberus
-      - openshift-qe-cluster-density-v2-observer
     test:
     - chain: redhat-chaos-krkn-hub-node-tests
     workflow: redhat-chaos-installer-aws
-  timeout: 6h0m0s
 - always_run: false
   as: krkn-hub-zone-tests
   steps:
@@ -109,9 +105,8 @@ tests:
     observers:
       enable:
       - redhat-chaos-cerberus
-      - openshift-qe-cluster-density-v2-observer
     test:
-    - ref: redhat-chaos-start-krkn
+    - ref: openshift-qe-cluster-density-v2
     - ref: redhat-chaos-zone-outage
     workflow: redhat-chaos-installer-aws
 - always_run: false
@@ -127,9 +122,8 @@ tests:
     observers:
       enable:
       - redhat-chaos-cerberus
-      - openshift-qe-cluster-density-v2-observer
     test:
-    - ref: redhat-chaos-start-krkn
+    - ref: openshift-qe-cluster-density-v2
     - chain: redhat-chaos-krkn-hub-control-plane-tests
     - chain: redhat-chaos-krkn-hub-worker-node-tests
     - ref: redhat-chaos-power-outage
@@ -149,14 +143,12 @@ tests:
     observers:
       enable:
       - redhat-chaos-cerberus
-      - openshift-qe-cluster-density-v2-observer
     test:
-    - ref: redhat-chaos-start-krkn
+    - ref: openshift-qe-cluster-density-v2
     - chain: redhat-chaos-krkn-hub-control-plane-tests
     - chain: redhat-chaos-krkn-hub-worker-node-tests
     - ref: redhat-chaos-power-outage
     workflow: redhat-chaos-installer-azure
-  timeout: 6h0m0s
 - always_run: false
   as: krkn-hub-tests-gcp
   steps:
@@ -166,7 +158,6 @@ tests:
     test:
     - chain: redhat-chaos-krkn-hub-tests
     workflow: redhat-chaos-installer-gcp
-  timeout: 6h0m0s
 - always_run: false
   as: krkn-hub-tests-azure
   steps:
@@ -182,11 +173,9 @@ tests:
     observers:
       enable:
       - redhat-chaos-cerberus
-      - openshift-qe-cluster-density-v2-observer
     test:
     - chain: redhat-chaos-krkn-hub-tests
     workflow: redhat-chaos-installer-azure
-  timeout: 6h0m0s
 - always_run: false
   as: krkn-hub-tests-aro
   steps:
@@ -205,14 +194,12 @@ tests:
     observers:
       enable:
       - redhat-chaos-cerberus
-      - openshift-qe-cluster-density-v2-observer
     test:
-    - ref: redhat-chaos-start-krkn
+    - ref: openshift-qe-cluster-density-v2
     - chain: redhat-chaos-krkn-hub-etcd-tests
     - chain: redhat-chaos-krkn-hub-console-tests
     - ref: redhat-chaos-pod-scenarios-prometheus-disruption
     workflow: redhat-chaos-installer-azure-aro-upi
-  timeout: 5h0m0s
 - always_run: false
   as: krkn-hub-tests-aro-node
   steps:
@@ -231,9 +218,8 @@ tests:
     observers:
       enable:
       - redhat-chaos-cerberus
-      - openshift-qe-cluster-density-v2-observer
     test:
-    - ref: redhat-chaos-start-krkn
+    - ref: openshift-qe-cluster-density-v2
     - ref: redhat-chaos-network-chaos
     - ref: redhat-chaos-pod-network-chaos
     - chain: redhat-chaos-hog-scenarios

@@ -46,8 +46,8 @@ resources:
       cpu: 100m
       memory: 200Mi
 tests:
-- as: krkn-tests-rosa
-  cron: 0 1 19 * *
+- always_run: false
+  as: krkn-tests-rosa
   steps:
     cluster_profile: aws-qe
     env:
@@ -65,17 +65,15 @@ tests:
     observers:
       enable:
       - redhat-chaos-cerberus
-      - openshift-qe-cluster-density-v2-observer
     test:
-    - ref: redhat-chaos-start-krkn
+    - ref: openshift-qe-cluster-density-v2
     - chain: redhat-chaos-krkn-hub-etcd-tests
     - chain: redhat-chaos-krkn-hub-ovn-disruption
     - ref: redhat-chaos-pod-scenarios-prometheus-disruption
     - chain: redhat-chaos-krkn-hub-random-system-pods-disruption
     workflow: rosa-aws-sts
-  timeout: 8h0m0s
-- as: krkn-tests-rosa-node
-  cron: 0 4 19 * *
+- always_run: false
+  as: krkn-tests-rosa-node
   steps:
     cluster_profile: aws-qe
     env:
@@ -93,13 +91,11 @@ tests:
     observers:
       enable:
       - redhat-chaos-cerberus
-      - openshift-qe-cluster-density-v2-observer
     test:
     - chain: redhat-chaos-krkn-hub-node-tests
     workflow: rosa-aws-sts
-  timeout: 8h0m0s
-- as: krkn-tests-rosa-hcp
-  cron: 0 1 27 * *
+- always_run: false
+  as: krkn-tests-rosa-hcp
   steps:
     allow_skip_on_success: true
     cluster_profile: aws-perfscale-qe
@@ -122,15 +118,13 @@ tests:
     observers:
       enable:
       - redhat-chaos-cerberus
-      - openshift-qe-cluster-density-v2-observer
     test:
-    - ref: redhat-chaos-start-krkn
+    - ref: openshift-qe-cluster-density-v2
     - ref: redhat-chaos-pod-scenarios-prometheus-disruption
     - chain: redhat-chaos-krkn-hub-random-system-pods-disruption
     workflow: rosa-aws-sts-hcp
-  timeout: 7h0m0s
-- as: krkn-rosa-hcp-node
-  cron: 0 1 15 * *
+- always_run: false
+  as: krkn-rosa-hcp-node
   steps:
     allow_skip_on_success: true
     cluster_profile: aws-perfscale-qe
@@ -153,13 +147,11 @@ tests:
     observers:
       enable:
       - redhat-chaos-cerberus
-      - openshift-qe-cluster-density-v2-observer
     test:
-    - ref: redhat-chaos-start-krkn
+    - ref: openshift-qe-cluster-density-v2
     - chain: redhat-chaos-krkn-hub-cluster-disruption
     - chain: redhat-chaos-krkn-hub-worker-node-tests
     workflow: rosa-aws-sts-hcp
-  timeout: 7h0m0s
 - always_run: false
   as: krkn-tests-rosa-infra
   steps:
@@ -182,12 +174,10 @@ tests:
     observers:
       enable:
       - redhat-chaos-cerberus
-      - openshift-qe-cluster-density-v2-observer
     test:
-    - ref: redhat-chaos-start-krkn
+    - ref: openshift-qe-cluster-density-v2
     - ref: redhat-chaos-node-disruptions-infra-outage
     workflow: rosa-aws-sts
-  timeout: 5h0m0s
 zz_generated_metadata:
   branch: main
   org: redhat-chaos

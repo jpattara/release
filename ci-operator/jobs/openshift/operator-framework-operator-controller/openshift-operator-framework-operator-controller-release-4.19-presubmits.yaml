@@ -187,7 +187,6 @@ presubmits:
     name: pull-ci-openshift-operator-framework-operator-controller-release-4.19-okd-scos-e2e-aws-ovn
     optional: true
     rerun_command: /test okd-scos-e2e-aws-ovn
-    skip_if_only_changed: ^docs/|\.md$|^(?:.*/)?(?:\.gitignore|OWNERS|PROJECT|LICENSE)$
     spec:
       containers:
       - args:
@@ -393,7 +392,6 @@ presubmits:
     name: pull-ci-openshift-operator-framework-operator-controller-release-4.19-openshift-e2e-aws-techpreview
     optional: true
     rerun_command: /test openshift-e2e-aws-techpreview
-    skip_if_only_changed: ^docs/|\.md$|^(?:.*\/)?(?:\.gitignore|DOWNSTREAM_OWNERS|DOWNSTREAM_OWNERS_ALIASES|LICENSE|DCO|CODEOWNERS)|\.golangci\.yaml|\.goreleaser\.yml|\.markdownlint.yaml|^\.github|Tiltfile$
     spec:
       containers:
       - args:

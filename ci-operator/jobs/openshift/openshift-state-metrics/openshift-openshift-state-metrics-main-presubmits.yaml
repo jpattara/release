@@ -211,6 +211,7 @@ presubmits:
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-openshift-state-metrics-main-ginkgo-tests-cmo
+    optional: true
     rerun_command: /test ginkgo-tests-cmo
     spec:
       containers:
@@ -395,7 +396,6 @@ presubmits:
     name: pull-ci-openshift-openshift-state-metrics-main-okd-scos-e2e-aws-ovn
     optional: true
     rerun_command: /test okd-scos-e2e-aws-ovn
-    skip_if_only_changed: ^docs/|\.md$|^(?:.*/)?(?:\.gitignore|OWNERS|PROJECT|LICENSE)$
     spec:
       containers:
       - args:

@@ -6,6 +6,7 @@
 
 approvers:
 - abyrne55
+- ajpantuso
 - bmeng
 - bng0y
 - chamalabey
@@ -13,7 +14,6 @@ approvers:
 - dakotalongrh
 - devppratik
 - dustman9000
-- fahlmant
 - iamkirkbater
 - makdaam
 - nikokolas3270
@@ -23,9 +23,11 @@ approvers:
 - reedcort
 - rogbas
 - sam-nguyen7
+- slopezz
 - smarthall
 - tafhim
 - theautoroboto
+- thetechnick
 - typeid
 - wanghaoran1988
 - zmird-r

@@ -5,7 +5,7 @@ presubmits:
     branches:
     - ^release-4.18$
     - ^release-4.18-
-    cluster: build03
+    cluster: build01
     context: ci/prow/artifacts
     decorate: true
     labels:
@@ -24,7 +24,7 @@ presubmits:
         - --target=artifacts
         command:
         - ci-operator
-        image: ci-operator:latest
+        image: quay-proxy.ci.openshift.org/openshift/ci:ci_ci-operator_latest
         imagePullPolicy: Always
         name: ""
         resources:
@@ -123,11 +123,11 @@ presubmits:
           secretName: result-aggregator
     trigger: (?m)^/test( | .* )(configmap-scale|remaining-required),?($|\s.*)
   - agent: kubernetes
-    always_run: true
+    always_run: false
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
-    cluster: build03
+    cluster: build01
     context: ci/prow/e2e-agnostic-ovn-cmd
     decorate: true
     labels:
@@ -206,7 +206,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws-3
+      ci-operator.openshift.io/cloud-cluster-profile: aws
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-e2e-aws
@@ -345,7 +345,7 @@ presubmits:
           secretName: result-aggregator
     trigger: (?m)^/test( | .* )e2e-aws-crun-wasm,?($|\s.*)
   - agent: kubernetes
-    always_run: true
+    always_run: false
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
@@ -354,7 +354,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws-3
+      ci-operator.openshift.io/cloud-cluster-profile: aws
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-e2e-aws-csi
@@ -575,7 +575,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws-3
+      ci-operator.openshift.io/cloud-cluster-profile: aws
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-e2e-aws-ovn
@@ -649,7 +649,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws-2
+      ci-operator.openshift.io/cloud-cluster-profile: aws-3
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-e2e-aws-ovn-cgroupsv2
@@ -722,7 +722,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws
+      ci-operator.openshift.io/cloud-cluster-profile: aws-3
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-e2e-aws-ovn-crun
@@ -795,7 +795,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws
+      ci-operator.openshift.io/cloud-cluster-profile: aws-3
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-e2e-aws-ovn-downgrade
@@ -869,7 +869,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws
+      ci-operator.openshift.io/cloud-cluster-profile: aws-2
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-e2e-aws-ovn-fips
@@ -942,7 +942,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws-2
+      ci-operator.openshift.io/cloud-cluster-profile: aws
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-e2e-aws-ovn-runc
@@ -1013,11 +1013,9 @@ presubmits:
     cluster: build01
     context: ci/prow/e2e-aws-ovn-serial
     decorate: true
-    decoration_config:
-      timeout: 5h0m0s
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws
+      ci-operator.openshift.io/cloud-cluster-profile: aws-2
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-e2e-aws-ovn-serial
@@ -1090,7 +1088,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws-3
+      ci-operator.openshift.io/cloud-cluster-profile: aws
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-e2e-aws-ovn-upgrade
@@ -1164,7 +1162,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws-3
+      ci-operator.openshift.io/cloud-cluster-profile: aws-2
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-e2e-aws-single-node
@@ -1233,7 +1231,7 @@ presubmits:
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
-    cluster: build03
+    cluster: build01
     context: ci/prow/e2e-azure
     decorate: true
     labels:
@@ -1307,7 +1305,7 @@ presubmits:
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
-    cluster: build03
+    cluster: build01
     context: ci/prow/e2e-azure-ovn-upgrade
     decorate: true
     labels:
@@ -1384,11 +1382,9 @@ presubmits:
     cluster: build01
     context: ci/prow/e2e-external-aws-ccm
     decorate: true
-    decoration_config:
-      timeout: 6h0m0s
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws
+      ci-operator.openshift.io/cloud-cluster-profile: aws-3
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-e2e-external-aws-ccm
@@ -1603,13 +1599,13 @@ presubmits:
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
-    cluster: build05
+    cluster: build06
     context: ci/prow/e2e-metal-ipi-ovn-dualstack
     decorate: true
     labels:
+      capability/intranet: intranet
       ci-operator.openshift.io/cloud: equinix-ocp-metal
       ci-operator.openshift.io/cloud-cluster-profile: equinix-ocp-metal
-      ci-operator.openshift.io/cluster: build05
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-e2e-metal-ipi-ovn-dualstack
@@ -1678,15 +1674,13 @@ presubmits:
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
-    cluster: build05
+    cluster: build06
     context: ci/prow/e2e-metal-ipi-ovn-ipv6
     decorate: true
-    decoration_config:
-      timeout: 5h30m0s
     labels:
+      capability/intranet: intranet
       ci-operator.openshift.io/cloud: equinix-ocp-metal
       ci-operator.openshift.io/cloud-cluster-profile: equinix-ocp-metal
-      ci-operator.openshift.io/cluster: build05
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-e2e-metal-ipi-ovn-ipv6
@@ -1829,7 +1823,7 @@ presubmits:
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
-    cluster: build03
+    cluster: build01
     context: ci/prow/e2e-openstack-csi-cinder
     decorate: true
     labels:
@@ -1903,7 +1897,7 @@ presubmits:
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
-    cluster: build03
+    cluster: build01
     context: ci/prow/e2e-openstack-csi-manila
     decorate: true
     labels:
@@ -2051,7 +2045,7 @@ presubmits:
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
-    cluster: build03
+    cluster: build01
     context: ci/prow/images
     decorate: true
     labels:
@@ -2107,7 +2101,7 @@ presubmits:
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
-    cluster: build03
+    cluster: build01
     context: ci/prow/integration
     decorate: true
     labels:
@@ -2166,7 +2160,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws
+      ci-operator.openshift.io/cloud-cluster-profile: aws-2
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-k8s-e2e-aws
@@ -2231,7 +2225,7 @@ presubmits:
           secretName: result-aggregator
     trigger: (?m)^/test( | .* )k8s-e2e-aws,?($|\s.*)
   - agent: kubernetes
-    always_run: true
+    always_run: false
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
@@ -2240,7 +2234,7 @@ presubmits:
     decorate: true
     labels:
       ci-operator.openshift.io/cloud: aws
-      ci-operator.openshift.io/cloud-cluster-profile: aws
+      ci-operator.openshift.io/cloud-cluster-profile: aws-2
       ci.openshift.io/generator: prowgen
       pj-rehearse.openshift.io/can-be-rehearsed: "true"
     name: pull-ci-openshift-kubernetes-release-4.18-k8s-e2e-aws-ovn-serial
@@ -2616,7 +2610,6 @@ presubmits:
     name: pull-ci-openshift-kubernetes-release-4.18-okd-scos-e2e-aws-ovn
     optional: true
     rerun_command: /test okd-scos-e2e-aws-ovn
-    skip_if_only_changed: ^docs/|\.md$|^(?:.*/)?(?:\.gitignore|OWNERS|PROJECT|LICENSE)$
     spec:
       containers:
       - args:
@@ -2680,7 +2673,7 @@ presubmits:
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
-    cluster: build03
+    cluster: build01
     context: ci/prow/okd-scos-images
     decorate: true
     decoration_config:
@@ -2741,8 +2734,6 @@ presubmits:
     cluster: build01
     context: ci/prow/perfscale-control-plane-6nodes
     decorate: true
-    decoration_config:
-      timeout: 3h30m0s
     labels:
       ci-operator.openshift.io/cloud: aws
       ci-operator.openshift.io/cloud-cluster-profile: aws-perfscale-qe
@@ -2813,7 +2804,7 @@ presubmits:
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
-    cluster: build03
+    cluster: build01
     context: ci/prow/unit
     decorate: true
     labels:
@@ -2867,7 +2858,7 @@ presubmits:
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
-    cluster: build03
+    cluster: build01
     context: ci/prow/verify
     decorate: true
     labels:
@@ -2921,7 +2912,7 @@ presubmits:
     branches:
     - ^release-4\.18$
     - ^release-4\.18-
-    cluster: build03
+    cluster: build01
     context: ci/prow/verify-commits
     decorate: true
     labels:
